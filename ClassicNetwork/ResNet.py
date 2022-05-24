@@ -55,7 +55,10 @@ class ResNet(nn.Module):
         super(ResNet,self).__init__()
         self.expansion = expansion
 
-        self.conv1 = Conv1(in_planes = 3, places= 64)
+        # https://discuss.pytorch.org/t/modify-resnet-or-vgg-for-single-channel-grayscale/22762/2
+        # For Color image training, the in_planes set to 3, for grayscale image training, in_planes set to 1
+        # after change, need to restart the kernel to train again.
+        self.conv1 = Conv1(in_planes = 1, places= 64)
 
         self.layer1 = self.make_layer(in_places = 64, places= 64, block=blocks[0], stride=1)
         self.layer2 = self.make_layer(in_places = 256,places=128, block=blocks[1], stride=2)
