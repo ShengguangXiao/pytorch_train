@@ -1,7 +1,7 @@
 import math, os
 from PIL import Image
 
-data_dir = './OCR_Image'
+data_dir = './OCR_Image1'
 for root, dirs, _ in os.walk(data_dir):
     #print(root)
     for sub_dir in dirs:
