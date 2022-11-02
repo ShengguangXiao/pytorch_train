@@ -3,11 +3,12 @@ import sys
 
 def rename_one_folder(parent_path, folder_name):
     folder_path = parent_path + folder_name + '/'
+    print(folder_path)
     img_names = os.listdir(folder_path)
     img_names = list(filter(lambda x: x.endswith('.png'), img_names))
 
     for i in range(len(img_names)):
-        new_img_name = folder_name + "-" + str(i + 1) + ".png"
+        new_img_name = folder_name + "-index-" + str(i + 1) + ".png"
         os.rename(folder_path + img_names[i], folder_path + new_img_name)
 
 
@@ -25,7 +26,6 @@ if __name__ == '__main__':
 
     for folder_path in folder_paths:
         index = folder_path.rfind('/')
-        print(index)
         folder_name = folder_path[index + 1:len(folder_path)]
 
         rename_one_folder(parent_path, folder_name)
