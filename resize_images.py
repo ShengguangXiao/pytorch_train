@@ -1,5 +1,9 @@
 import math, os
 from PIL import Image
+from torch import equal
+
+target_width = 36
+target_height = 48
 
 data_dir = './OCR_Image1'
 for root, dirs, _ in os.walk(data_dir):
@@ -13,5 +17,9 @@ for root, dirs, _ in os.walk(data_dir):
             img_name = img_names[i]
             path_img = os.path.join(root, sub_dir, img_name)
             img = Image.open(path_img)
+            width, height = img.size
+            if width == target_width and height == target_height:
+                continue
+
             img = img.resize((36, 48))
             img.save(path_img)
