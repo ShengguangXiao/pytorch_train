@@ -14,6 +14,6 @@ if __name__ == '__main__':
     index = int(start_index)
     for i in range(len(img_names)):
         img_name = img_names[i]
-        new_img_name = img_name[0] + "-" + str(index) + ".png"
+        new_img_name = img_name[0] + "-index-" + str(index) + ".png"
         os.rename(folder_path + img_name, folder_path + new_img_name)
         index = index + 1
